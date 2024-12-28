@@ -132,8 +132,9 @@ function updateCartContent() {
     let saveCartItems =JSON.parse(localStorage.getItem("cartitem"));
     saveCartItems.forEach(item=>{
     let dropDown = document.querySelector(".drop-down");
-    if(dropDown.hasChildNodes){
-        dropDown.removeChild(document.getElementsByClassName("cartcontent"))
+    const existingCartItems = dropDown.querySelectorAll(".cartcontent");
+    if(existingCartItems){
+        existingCartItems.forEach(item => item.remove());
     }
     let cartContainer = document.createElement("div");
     cartContainer.setAttribute("class", "cartcontent");
